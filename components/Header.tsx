@@ -9,14 +9,13 @@ interface HeaderProps {
 
 const Header = ({ label, showBackArrow }: HeaderProps) => {
   const router = useRouter();
-
   const handleBack = useCallback(() => {
     router.back();
   }, [router]);
 
   return (
     <div className="border-b-[1px] border-neutral-800 p-5">
-      <div className="flew flex-row items-center gap-2">
+      <div className="flex flex-row items-center gap-2">
         {showBackArrow && (
           <BiArrowBack
             onClick={handleBack}

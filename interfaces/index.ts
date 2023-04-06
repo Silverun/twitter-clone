@@ -5,6 +5,5 @@ export type User = Prisma.UserGetPayload<{
     posts: true;
     comments: true;
     notifications: true;
-    _count: true;
   };
-}>;
+}> & { followersCount: number };
