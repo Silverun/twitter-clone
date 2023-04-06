@@ -1,5 +1,8 @@
-import serverAuth from "@/libs/serverAuth";
 import { NextApiRequest, NextApiResponse } from "next";
+import prisma from "../../../libs/prismadb";
+import { Prisma } from "@prisma/client";
+
+export type User = Prisma.PromiseReturnType<typeof handler>;
 
 export default async function handler(
   req: NextApiRequest,
@@ -8,9 +11,14 @@ export default async function handler(
   if (req.method !== "GET") {
     return res.status(405).end();
   }
+
   try {
-    const { currentUser } = await serverAuth(req, res);
-    return res.status(200).json(currentUser);
+    const users = await prisma.user.findMany({
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    return res.status(200).json(users);
   } catch (error) {
     console.log(error);
     return res.status(400).end();
