@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Comment, Prisma } from "@prisma/client";
 
 export type User = Prisma.UserGetPayload<{
   include: {
@@ -7,3 +7,10 @@ export type User = Prisma.UserGetPayload<{
     notifications: true;
   };
 }> & { followersCount: number };
+
+export type PostWithComments = Prisma.PostGetPayload<{
+  include: {
+    comments: true;
+    user: true;
+  };
+}>;
