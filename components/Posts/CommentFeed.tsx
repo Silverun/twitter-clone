@@ -1,5 +1,5 @@
 import CommentItem from "./CommentItem";
-import { CommentExtended } from "@/interfaces";
+import { CommentExtended, User } from "@/interfaces";
 
 interface CommentFeedProps {
   comments?: CommentExtended[];
