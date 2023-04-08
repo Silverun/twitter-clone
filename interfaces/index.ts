@@ -1,4 +1,4 @@
-import { Comment, Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 
 export type User = Prisma.UserGetPayload<{
   include: {
@@ -10,9 +10,11 @@ export type User = Prisma.UserGetPayload<{
 
 export type PostWithComments = Prisma.PostGetPayload<{
   include: {
+    comments: true;
     user: true;
   };
-}> & { comments: CommentExtended[] };
+}>;
+// & { comments?: CommentExtended[] };
 
 export type CommentExtended = Prisma.CommentGetPayload<{
   include: {
