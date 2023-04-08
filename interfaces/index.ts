@@ -10,7 +10,19 @@ export type User = Prisma.UserGetPayload<{
 
 export type PostWithComments = Prisma.PostGetPayload<{
   include: {
-    comments: true;
+    user: true;
+  };
+}> & { comments: CommentExtended[] };
+
+export type CommentExtended = Prisma.CommentGetPayload<{
+  include: {
+    post: true;
+    user: true;
+  };
+}>;
+
+export type NotificationExtended = Prisma.NotificationGetPayload<{
+  include: {
     user: true;
   };
 }>;

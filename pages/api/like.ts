@@ -11,7 +11,7 @@ export default async function handler(
   }
 
   try {
-    const { postId } = req.body;
+    const { postId }: { postId: string } = req.body;
     const { currentUser } = await serverAuth(req, res);
 
     if (!postId || typeof postId !== "string") {
@@ -32,6 +32,28 @@ export default async function handler(
 
     if (req.method === "POST") {
       updatedLikedIds.push(currentUser.id);
+
+      try {
+        if (post?.userId) {
+          await prisma.notification.create({
+            data: {
+              body: "Someone liked your tweet!",
+              userId: post.userId,
+            },
+          });
+
+          await prisma.user.update({
+            where: {
+              id: post.userId,
+            },
+            data: {
+              hasNotification: true,
+            },
+          });
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     if (req.method === "DELETE") {
