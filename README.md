@@ -1,5 +1,5 @@
 ### Description:
-This is a mobile first CRUD app that copies some functionality and design aspects of Twitter. This was made purelly for practice and in order to learn new skills.
+This is a mobile first CRUD app that copies some functionality and design aspects of Twitter. This was made purely for practice and in order to learn new skills.
 
 <p>Brief showcase video:</p>
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=sONww5EfKR0" target="_blank">
