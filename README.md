@@ -1,5 +1,5 @@
 ### Description:
-This is a CRUD app that copies some functionality and design aspects of Twitter. This was made purelly for practice and learn new skills.
+This is a mobile first CRUD app that copies some functionality and design aspects of Twitter. This was made purelly for practice and in order to learn new skills.
 
 ### Main stack used:
 - TypeScript
